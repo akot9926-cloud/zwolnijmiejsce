@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08080a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/logo.png">
+<title>#ZWOLNIJMIEJSCE — KIBICE • KIBICOM</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home">#ZWOLNIJMIEJSCE</a>
+  <nav><a href="#ogloszenia">Ogłoszenia</a><a href="#jak">Jak to działa</a><button id="loginBtn" class="ghost">Zaloguj</button></nav>
+</header>
+
+<main id="home">
+<section class="hero">
+  <img src="assets/logo.png" alt="#ZWOLNIJMIEJSCE" class="hero-logo">
+  <div class="hero-copy">
+    <div class="eyebrow">KIBICE • KIBICOM</div>
+    <h1>Zwolnij miejsce.<br><span>Pomóż kibicowi.</span></h1>
+    <p>Niewykorzystany kod może dać komuś możliwość pojawienia się na stadionie.</p>
+    <div class="hero-actions">
+      <button class="primary" data-mode="offer">🎟️ MAM KOD</button>
+      <button class="secondary" data-mode="request">🔎 SZUKAM KODU</button>
+    </div>
+  </div>
+</section>
+
+<section id="ogloszenia" class="section">
+  <div class="section-head"><div><div class="eyebrow">SPOŁECZNOŚĆ</div><h2>Najnowsze ogłoszenia</h2></div>
+    <select id="typeFilter"><option value="all">Wszystkie</option><option value="request">Szukam kodu</option><option value="offer">Mam kod</option></select>
+  </div>
+  <div id="list" class="grid"><div class="empty">Ładowanie ogłoszeń…</div></div>
+</section>
+
+<section id="jak" class="section how">
+  <div class="eyebrow">PROSTE ZASADY</div><h2>Jak to działa?</h2>
+  <div class="steps">
+    <article><b>01</b><h3>Masz wolny kod?</h3><p>Dodaj ogłoszenie i opisz, komu możesz pomóc.</p></article>
+    <article><b>02</b><h3>Szukasz kodu?</h3><p>Dodaj prośbę i napisz, dlaczego chcesz być na meczu.</p></article>
+    <article><b>03</b><h3>Kibic pomaga kibicowi.</h3><p>Kontakt odbywa się prywatnie. Bez publicznego publikowania e-maili.</p></article>
+  </div>
+</section>
+
+<section class="section rules">
+  <div class="notice"><strong>⚠️ Ważne</strong><p>#ZWOLNIJMIEJSCE nie jest serwisem sprzedażowym. Użytkownicy przekazują niewykorzystane kody zgodnie z zasadami organizatora. Nie publikuj kodów publicznie.</p></div>
+</section>
+</main>
+
+<footer>
+  <div class="counters">
+    <div><strong id="online">—</strong><span>TERAZ NA STRONIE</span></div>
+    <div><strong id="visits">—</strong><span>ODWIEDZIN OD STARTU</span></div>
+    <div><strong id="passed">—</strong><span>PRZEKAZANYCH KODÓW</span></div>
+  </div>
+  <p>© #ZWOLNIJMIEJSCE — KIBICE • KIBICOM</p>
+</footer>
+
+<div id="modal" class="modal hidden">
+ <div class="sheet">
+  <button class="x" id="close">✕</button>
+  <h2 id="modalTitle">Dodaj ogłoszenie</h2>
+  <p class="muted" id="authHint">Zaloguj się, aby dodać ogłoszenie.</p>
+  <form id="listingForm">
+    <input type="hidden" id="listingType">
+    <label>Mecz<input id="match" required maxlength="120" placeholder="np. Widzew Łódź — Legia Warszawa"></label>
+    <label>Sektor<input id="sector" maxlength="50" placeholder="np. C / dowolny"></label>
+    <label>Liczba kodów<input id="quantity" type="number" min="1" max="10" value="1" required></label>
+    <label id="storyLabel">Opis<textarea id="story" maxlength="1000" required placeholder="Napisz kilka słów…"></textarea></label>
+    <button class="primary wide" type="submit">Opublikuj ogłoszenie</button>
+  </form>
+ </div>
+</div>
+
+<div id="auth" class="modal hidden">
+ <div class="sheet">
+  <button class="x" id="authClose">✕</button>
+  <h2>Konto kibica</h2>
+  <p class="muted">Załóż konto lub zaloguj się. E-mail nie będzie publicznie widoczny.</p>
+  <label>E-mail<input id="email" type="email" required></label>
+  <label>Hasło<input id="password" type="password" minlength="8" required></label>
+  <div class="auth-actions"><button class="primary" id="signup">Załóż konto</button><button class="secondary" id="signin">Zaloguj</button></div>
+  <button class="text-btn" id="logout">Wyloguj</button>
+ </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body></html>
